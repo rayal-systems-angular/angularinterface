@@ -5,8 +5,8 @@
 
         <div class="container">
           <h2 class="py-5">{{title}}</h2>
-          <app-add></app-add>
-          <app-search></app-search>
+          <app-add (addEvt)="addApt($event)"></app-add>
+          <app-search (queryEvt)="searchApt($event)"></app-search>
           <app-list [aptList]="theList" (deleteEvt)="deleteApt($event)"></app-list>
         </div>
 

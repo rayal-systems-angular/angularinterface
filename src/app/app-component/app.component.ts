@@ -18,6 +18,27 @@ export class AppComponent implements OnInit {
     });
   }
 
+  addApt(theApt: object) {
+    this.theList.unshift(theApt);
+  }
+
+  searchApt(theQuery: string) {
+    console.log(theQuery);
+    this.theList = this.theList.filter((eachItem) => {
+      return (
+        eachItem['petName']
+          .toLowerCase()
+          .includes(theQuery.toLocaleLowerCase()) ||
+        eachItem['ownerName']
+          .toLowerCase()
+          .includes(theQuery.toLocaleLowerCase()) ||
+        eachItem['aptNotes']
+          .toLowerCase()
+          .includes(theQuery.toLocaleLowerCase())
+      );
+    });
+  }
+
   deleteApt(theApt: object) {
     this.theList = without(this.theList, theApt);
   }
