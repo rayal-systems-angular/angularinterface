@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -6,7 +6,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   query: string;
+
+  @Input() orderBy;
+  @Input() orderType;
   @Output() queryEvt = new EventEmitter<string>();
+  @Output() orderEvt = new EventEmitter<string>();
 
   constructor() {}
 
@@ -14,5 +18,11 @@ export class SearchComponent implements OnInit {
 
   handleQuery(query: string) {
     this.queryEvt.emit(query);
+  }
+
+  handleSort(orderItems) {
+    this.orderBy = orderItems.orderBy;
+    this.orderType = orderItems.orderType;
+    this.orderEvt.emit(orderItems);
   }
 }

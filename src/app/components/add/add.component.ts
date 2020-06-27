@@ -26,7 +26,7 @@ export class AddComponent implements OnInit {
     const tempItem: object = {
       petName: formInfo.petName,
       ownerName: formInfo.ownerName,
-      aptDate: formInfo.aptDate + '' + formInfo.aptTime,
+      aptDate: formInfo.aptDate + ' ' + formInfo.aptTime,
       aptNotes: formInfo.aptNotes,
     };
     this.addEvt.emit(tempItem);

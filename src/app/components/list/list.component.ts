@@ -8,12 +8,20 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 export class ListComponent {
   @Input() aptList;
   @Output() deleteEvt = new EventEmitter();
-
+  @Output() updateEvt = new EventEmitter();
   faTimes = faTimes;
 
   constructor() {}
 
   handleDelete(theApt: object) {
     this.deleteEvt.emit(theApt);
+  }
+
+  handleUpdate(theApt: Object, labelName: string, newValue: string) {
+    this.updateEvt.emit({
+      theApt: theApt, 
+      labelName: labelName, 
+      newValue: newValue
+    });
   }
 }
